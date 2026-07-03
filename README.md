@@ -1,15 +1,8 @@
-![Header](header.png)
-
 <div align="center">
 
 # yandex_parser
 
 **Yandex Dzen search scraper with Excel export**
-
-[![License](https://img.shields.io/badge/license-MIT-2C2C2C?style=for-the-badge&labelColor=1E1E1E)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.12-2C2C2C?style=for-the-badge&logo=python&labelColor=1E1E1E)]()
-[![Playwright](https://img.shields.io/badge/playwright-browser-2C2C2C?style=for-the-badge&labelColor=1E1E1E)]()
-[![Pandas](https://img.shields.io/badge/pandas-data-2C2C2C?style=for-the-badge&logo=pandas&labelColor=1E1E1E)]()
 
 </div>
 
@@ -26,12 +19,26 @@ Scrapes Yandex Dzen search results using Playwright with Chromium. For each topi
 
 ## ■ Stack
 
+<div align="center">
+
 | Component | Technology |
 |-----------|------------|
 | Browser | Playwright (Chromium) |
 | Parsing | BeautifulSoup, lxml |
 | Data | pandas, openpyxl |
 | Output | Excel (.xlsx) |
+
+</div>
+
+## ■ How It Works
+
+```
+1. Prompts interactively for topics, output filename, mobile/headless mode, and per-topic limits.
+2. For each topic, opens dzen.ru/search via Playwright + Chromium with anti-automation flags.
+3. Collects article links, distinguishing channel pages from articles via URL heuristics; applies randomized delays between actions.
+4. Fetches each article's HTML using BeautifulSoup + lxml.
+5. Exports collected rows (url, title, html, topic, fetched_at) to an Excel workbook via pandas + openpyxl.
+```
 
 ## ■ Usage
 
